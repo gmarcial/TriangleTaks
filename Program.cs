@@ -20,7 +20,8 @@ namespace TaskTriangle
             var thirdSide = double.Parse(Console.ReadLine());
 
             var triangleFactory = new TriangleFactory();
-            var triangle = triangleFactory.Create(firstSide, secondSide, thirdSide);
+            var triangleTypeCalculator = new TriangleTypeCalculator();
+            var triangle = triangleFactory.Create(firstSide, secondSide, thirdSide, triangleTypeCalculator);
             
             Console.WriteLine(triangle.Type);
         }
