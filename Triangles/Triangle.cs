@@ -10,6 +10,7 @@ namespace TaskTriangle.Triangles
             double thirdSide)
         {
             if(!((firstSide < (secondSide + thirdSide)) && (secondSide < (firstSide + thirdSide)) && (thirdSide < (firstSide + secondSide)))) 
+                //TODO: For me, it should not be a exception, as it is a quick thing to do, but it can be refactored for another approach.
                 throw new InvalidFormatTriangleException("The sides informed form one triangle invalid.");
 
             FirstSide = firstSide;

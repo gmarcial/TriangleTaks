@@ -19,7 +19,8 @@ namespace TaskTriangle
             Console.Write("O terciero e ultimo lado: ");
             var thirdSide = double.Parse(Console.ReadLine());
 
-            var triangle = new Triangle(firstSide, secondSide, thirdSide);
+            var triangleFactory = new TriangleFactory();
+            var triangle = triangleFactory.Create(firstSide, secondSide, thirdSide);
             
             Console.WriteLine(triangle.Type);
         }
