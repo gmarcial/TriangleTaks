@@ -1,7 +1,9 @@
 ﻿using System;
 using TaskTriangle.Triangles;
+using TaskTriangle.Triangles.Factories;
+using TaskTriangle.Triangles.TriangleTypeCalculators;
 
-namespace TaskTriangle
+namespace Hey
 {
     class Program
     {
@@ -18,12 +20,14 @@ namespace TaskTriangle
 
             Console.Write("O terciero e ultimo lado: ");
             var thirdSide = double.Parse(Console.ReadLine());
-
+            
+            var threeSides = new ThreeSides(firstSide, secondSide, thirdSide);
+            
             var triangleFactory = new TriangleFactory();
             var triangleTypeCalculator = new TriangleTypeCalculator();
-            var triangle = triangleFactory.Create(firstSide, secondSide, thirdSide, triangleTypeCalculator);
+            var triangle = triangleFactory.Create(threeSides, triangleTypeCalculator);
             
-            Console.WriteLine(triangle.Type);
+            Console.WriteLine(triangle.Types);
         }
     }
 }

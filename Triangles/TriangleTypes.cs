@@ -1,6 +1,6 @@
 namespace TaskTriangle.Triangles
 {
-    public enum TriangleType
+    public enum TriangleTypes
     {
         Undefined = 0,
         Equilateral = 1,

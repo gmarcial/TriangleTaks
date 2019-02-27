@@ -1,29 +1,27 @@
-using System;
+using TaskTriangle.Triangles.Exceptions;
+using TaskTriangle.Triangles.Interfaces;
+using TaskTriangle.Triangles.TriangleTypeCalculators.Interfaces;
 
 namespace TaskTriangle.Triangles
 {
-    public class Triangle : ITriangle
+        public class Triangle : ITriangle
     {
         public Triangle(
-            double firstSide, 
-            double secondSide, 
-            double thirdSide,
+            ThreeSides threeSides,
             ITriangleTypeCalculator triangleTypeCalculator)
         {
-            if(!((firstSide < (secondSide + thirdSide)) && (secondSide < (firstSide + thirdSide)) && (thirdSide < (firstSide + secondSide)))) 
+            if (!((threeSides.FirstSide < (threeSides.SecondSide + threeSides.ThirdSide)) &&
+                  (threeSides.SecondSide < (threeSides.FirstSide + threeSides.ThirdSide)) &&
+                  (threeSides.ThirdSide < (threeSides.FirstSide + threeSides.SecondSide)))) 
                 //TODO: For me, it should not be a exception, as it is a quick thing to do, but it can be refactored for another approach.
                 throw new InvalidFormatTriangleException("The sides informed form one triangle invalid.");
 
-            FirstSide = firstSide;
-            SecondSide = secondSide;
-            ThirdSide = thirdSide;
+            ThreeSides = threeSides;
             _triangleTypeCalculator = triangleTypeCalculator;
         }
 
-        public double FirstSide { get; private set; }
-        public double SecondSide { get; private set; }
-        public double ThirdSide { get; private set; }
-        public TriangleType Type => _triangleTypeCalculator.Calculate(FirstSide, SecondSide, ThirdSide);
+        public ThreeSides ThreeSides { get; }
+        public TriangleTypes Types => _triangleTypeCalculator.Calculate(ThreeSides);
         private ITriangleTypeCalculator _triangleTypeCalculator;
     }
 }

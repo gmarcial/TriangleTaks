@@ -1,6 +1,6 @@
 using System;
 
-namespace TaskTriangle.Triangles
+namespace TaskTriangle.Triangles.Exceptions
 {
     public class InvalidFormatTriangleException : Exception
     {
